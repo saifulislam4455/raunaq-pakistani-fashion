@@ -1,0 +1,540 @@
+
+@import "tailwindcss";
+
+/* ========================================
+   RAUNAQ — GLOBAL DESIGN SYSTEM
+======================================== */
+
+:root {
+  font-family: "Inter", Arial, sans-serif;
+  color: #421b28;
+  background: #f7f2e9;
+
+  --raunaq-cream: #f7f2e9;
+  --raunaq-maroon: #421b28;
+  --raunaq-dark: #251519;
+  --raunaq-gold: #c5a16b;
+  --raunaq-light-gold: #e6cfaa;
+
+  --page-padding: clamp(18px, 5vw, 80px);
+  --section-space: clamp(65px, 8vw, 115px);
+}
+
+/* ========================================
+   RESET
+======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: clip;
+
+  background: var(--raunaq-cream);
+  color: var(--raunaq-maroon);
+
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overscroll-behavior-x: none;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app,
+.site-shell {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--raunaq-cream);
+}
+
+/* ========================================
+   TYPOGRAPHY
+======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: inherit;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+}
+
+/* ========================================
+   SELECTION
+======================================== */
+
+::selection {
+  color: #fff8ed;
+  background: var(--raunaq-maroon);
+}
+
+/* ========================================
+   SMOOTH INTERACTION
+======================================== */
+
+a,
+button,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--raunaq-gold);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   PREMIUM SCROLLBAR
+======================================== */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--raunaq-gold) var(--raunaq-cream);
+}
+
+html::-webkit-scrollbar {
+  width: 9px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--raunaq-cream);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--raunaq-gold);
+  border: 2px solid var(--raunaq-cream);
+  border-radius: 20px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--raunaq-maroon);
+}
+
+/* ========================================
+   ANNOUNCEMENT BAR
+======================================== */
+
+.announcement-bar {
+  position: relative;
+  z-index: 120;
+  width: 100%;
+}
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+header {
+  box-sizing: border-box;
+}
+
+header a,
+header button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========================================
+   GLOBAL SECTION SPACING
+======================================== */
+
+section {
+  position: relative;
+  scroll-margin-top: 90px;
+}
+
+/* ========================================
+   LUXURY 3D SHOWROOM
+======================================== */
+
+.luxury-showroom {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: min(850px, 90vh);
+  min-height: 680px;
+  overflow: hidden;
+
+  background: radial-gradient(
+    ellipse at 70% 35%,
+    #624333 0%,
+    #30201c 48%,
+    #1c1413 100%
+  );
+}
+
+.luxury-showroom__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.luxury-showroom__canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.luxury-showroom__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(25, 17, 16, 0.88) 0%,
+      rgba(25, 17, 16, 0.58) 24%,
+      rgba(25, 17, 16, 0.12) 52%,
+      transparent 75%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(25, 17, 16, 0.55),
+      transparent 35%
+    );
+}
+
+.luxury-showroom__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 50px clamp(24px, 6vw, 90px);
+  pointer-events: none;
+}
+
+.luxury-showroom__copy {
+  width: min(390px, 38%);
+  padding: 25px 0;
+  pointer-events: auto;
+}
+
+.luxury-showroom__copy h1 {
+  margin: 0;
+  color: #fff8ed;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(48px, 5.5vw, 78px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.luxury-showroom__copy p {
+  max-width: 350px;
+  color: #e1d0bd;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.luxury-showroom__copy a,
+.luxury-showroom__copy button {
+  cursor: pointer;
+}
+
+.luxury-showroom__featured {
+  position: absolute;
+  z-index: 3;
+  right: 45px;
+  bottom: 35px;
+  padding: 12px 18px;
+
+  border-left: 1px solid var(--raunaq-gold);
+  color: #fff8ed;
+  background: rgba(30, 20, 18, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+/* ========================================
+   GENERAL IMAGE BEHAVIOUR
+======================================== */
+
+img {
+  height: auto;
+}
+
+button,
+a,
+img {
+  -webkit-user-drag: none;
+}
+
+/* ========================================
+   RESPONSIVE SHOWROOM
+======================================== */
+
+@media (max-width: 900px) {
+  .luxury-showroom {
+    height: 780px;
+    min-height: 780px;
+  }
+
+  .luxury-showroom__copy {
+    width: 45%;
+  }
+}
+
+@media (max-width: 700px) {
+  .luxury-showroom {
+    height: 780px;
+    min-height: 780px;
+  }
+
+  .luxury-showroom__shade {
+    background: linear-gradient(
+      180deg,
+      rgba(25, 17, 16, 0.88) 0%,
+      rgba(25, 17, 16, 0.55) 34%,
+      rgba(25, 17, 16, 0.08) 75%,
+      rgba(25, 17, 16, 0.55) 100%
+    );
+  }
+
+  .luxury-showroom__content {
+    align-items: flex-start;
+    padding: 45px 22px;
+  }
+
+  .luxury-showroom__copy {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .luxury-showroom__copy h1 {
+    font-size: 48px;
+  }
+
+  .luxury-showroom__copy p {
+    max-width: 290px;
+    font-size: 11px;
+  }
+
+  .luxury-showroom__featured {
+    right: 18px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .luxury-showroom__copy h1 {
+    font-size: 42px;
+  }
+}
+
+/* PREMIUM 3D CENTER DRESS EFFECT */
+
+.couture-slides {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+
+.couture-slide {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.couture-slide-center {
+  z-index: 30 !important;
+}
+
+.couture-dress-active {
+  overflow: hidden;
+  border: 1px solid rgba(255, 224, 170, 0.95);
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(216, 183, 126, 0.32),
+    inset 0 0 25px rgba(255, 255, 255, 0.12);
+}
+
+.couture-center-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      rgba(255, 231, 190, 0.17),
+      transparent 55%
+    );
+  mix-blend-mode: screen;
+}
+
+.couture-dress-active .couture-image-frame img {
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.couture-dress-active .couture-image-reflection {
+  animation-duration: 3.5s;
+}
+
+.couture-slide-center .couture-card-details {
+  padding-bottom: 30px;
+}
+
+.couture-slide-center .couture-card-details h3 {
+  font-size: 27px;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .couture-slide-center .couture-card-details h3 {
+    font-size: 21px;
+  }
+}
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   RAUNAQ — VERTICAL SCROLL RESTORE
+======================================== */
+
+html,
+body {
+  width: 100%;
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: static !important;
+}
+
+#root,
+.app,
+.site-shell {
+  width: 100%;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  position: relative;
+}
+
+body {
+  overscroll-behavior-y: auto !important;
+  touch-action: pan-y;
+}
+
+.luxury-showroom {
+  flex-shrink: 0;
+}
+/* RAUNAQ — RESTORE NORMAL PAGE SCROLL */
+
+html,
+body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: static !important;
+}
+
+body {
+  margin: 0;
+  overscroll-behavior-y: auto;
+}
+
+#root,
+.app,
+.site-shell {
+  min-height: 100vh;
+  height: auto !important;
+  overflow-y: visible !important;
+}
+
+.raunaq-hero {
+  touch-action: pan-y;
+}
+
+.raunaq-stage {
+  touch-action: pan-y;
+}

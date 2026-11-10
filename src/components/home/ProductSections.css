@@ -1,0 +1,611 @@
+
+/* =========================================
+   RAUNAQ — LUXURY 3D PRODUCT EXPERIENCE
+========================================= */
+
+.raunaq-featured-section,
+.raunaq-collections-section {
+  position: relative;
+  padding: 110px 5%;
+  background: #f7f2e9;
+  color: #421b28;
+  overflow: hidden;
+}
+
+.raunaq-section-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.raunaq-section-heading {
+  max-width: 720px;
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.raunaq-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #a77a36;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.raunaq-section-heading h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 5vw, 57px);
+  line-height: 1.15;
+  font-weight: 500;
+  margin: 0 0 17px;
+}
+
+.raunaq-section-heading h2 span {
+  color: #a77a36;
+  font-style: italic;
+}
+
+.raunaq-section-heading > p {
+  color: #806d69;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 570px;
+  margin: 0 auto;
+}
+
+/* PRODUCT GRID */
+
+.raunaq-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 35px 24px;
+  perspective: 1600px;
+}
+
+/* 3D CARD */
+
+.raunaq-product-card {
+  position: relative;
+  min-width: 0;
+  background: transparent;
+  border-radius: 5px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  isolation: isolate;
+  z-index: 1;
+}
+
+.raunaq-product-card:hover {
+  z-index: 5;
+}
+
+.raunaq-product-card-inner {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #fffdf9;
+  border: 1px solid rgba(167, 122, 54, 0.18);
+  border-radius: 5px;
+  box-shadow:
+    0 10px 25px rgba(66, 27, 40, 0.045),
+    0 2px 5px rgba(66, 27, 40, 0.025);
+  transform-style: preserve-3d;
+  transition:
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+}
+
+.raunaq-product-card:hover .raunaq-product-card-inner {
+  border-color: rgba(167, 122, 54, 0.55);
+  box-shadow:
+    0 35px 65px rgba(66, 27, 40, 0.15),
+    0 12px 25px rgba(167, 122, 54, 0.12);
+}
+
+/* IMAGE AREA */
+
+.raunaq-product-image-wrap {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, #fffaf0, #e8ddce 75%);
+  transform-style: preserve-3d;
+}
+
+.raunaq-product-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: translateZ(25px) scale(1.02);
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.raunaq-product-card:hover .raunaq-product-image {
+  transform: translateZ(45px) scale(1.09);
+}
+
+/* IMAGE DARK EDGES */
+
+.raunaq-image-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(35, 13, 20, 0.34),
+    transparent 40%,
+    rgba(255, 255, 255, 0.08)
+  );
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+}
+
+.raunaq-product-card:hover .raunaq-image-vignette {
+  opacity: 0.85;
+}
+
+/* MOVING GOLD LIGHT */
+
+.raunaq-product-light {
+  position: absolute;
+  z-index: 3;
+  inset: -50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(255, 239, 199, 0.55),
+    rgba(255, 255, 255, 0.12) 22%,
+    transparent 48%
+  );
+  transition: opacity 0.4s ease;
+  mix-blend-mode: screen;
+}
+
+.raunaq-product-card:hover .raunaq-product-light {
+  opacity: 1;
+}
+
+/* TOP LABEL */
+
+.raunaq-product-top-label {
+  position: absolute;
+  top: 15px;
+  left: 14px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  color: #fff5df;
+  background: rgba(66, 27, 40, 0.85);
+  backdrop-filter: blur(10px);
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  transform: translateZ(35px);
+}
+
+.raunaq-product-badge {
+  position: absolute;
+  z-index: 4;
+  top: 55px;
+  left: 14px;
+  padding: 8px 10px;
+  background: #b18a4a;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 1px;
+  transform: translateZ(35px);
+}
+
+/* WISHLIST */
+
+.raunaq-wishlist-btn {
+  position: absolute;
+  z-index: 5;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(66, 27, 40, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.95);
+  color: #421b28;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  transform: translateZ(45px);
+}
+
+.raunaq-wishlist-btn.active {
+  background: #421b28;
+  color: white;
+  animation: raunaq-heart-pop 0.4s ease;
+}
+
+@keyframes raunaq-heart-pop {
+  0% { transform: translateZ(45px) scale(1); }
+  50% { transform: translateZ(45px) scale(1.3); }
+  100% { transform: translateZ(45px) scale(1); }
+}
+
+/* IMAGE CAPTION */
+
+.raunaq-product-image-caption {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  bottom: 72px;
+  text-align: center;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 2px;
+  opacity: 0;
+  transform: translateZ(40px);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.raunaq-product-card:hover .raunaq-product-image-caption {
+  opacity: 1;
+}
+
+/* ADD TO BAG */
+
+.raunaq-quick-add {
+  position: absolute;
+  z-index: 6;
+  left: 13px;
+  right: 13px;
+  bottom: 13px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #421b28;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(70px) translateZ(40px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background 0.3s ease;
+}
+
+.raunaq-product-card:hover .raunaq-quick-add {
+  opacity: 1;
+  transform: translateY(0) translateZ(40px);
+}
+
+.raunaq-quick-add:hover {
+  background: #a77a36;
+}
+
+.raunaq-quick-add.is-added {
+  background: #426c4e;
+  opacity: 1;
+  transform: translateY(0) translateZ(40px);
+}
+
+.raunaq-quick-add:disabled {
+  cursor: not-allowed;
+}
+
+/* PRODUCT INFORMATION */
+
+.raunaq-product-info {
+  position: relative;
+  padding: 20px 17px 22px;
+  transform: translateZ(20px);
+}
+
+.raunaq-product-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #a77a36;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.raunaq-product-info h3 {
+  margin: 13px 0 8px;
+  font-family: Georgia, serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.raunaq-product-card:hover .raunaq-product-info h3 {
+  color: #a77a36;
+}
+
+.raunaq-product-description {
+  min-height: 38px;
+  margin: 0;
+  color: #8a7a75;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.raunaq-product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 19px;
+  padding-top: 15px;
+  border-top: 1px solid #eee5dc;
+}
+
+.raunaq-product-prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+
+.raunaq-product-prices strong {
+  font-size: 14px;
+  color: #421b28;
+}
+
+.raunaq-product-prices del {
+  color: #a99b94;
+  font-size: 11px;
+}
+
+.raunaq-product-arrow,
+.raunaq-collection-arrow {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid rgba(66, 27, 40, 0.2);
+  border-radius: 50%;
+  color: #421b28;
+  transition: 0.3s ease;
+}
+
+.raunaq-card-bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #a77a36, #e5c58c);
+  transition: width 0.6s ease;
+}
+
+.raunaq-product-card:hover .raunaq-card-bottom-line {
+  width: 100%;
+}
+
+/* VIEW ALL */
+
+.raunaq-view-all-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.raunaq-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 25px;
+  border: 1px solid #421b28;
+  color: #421b28;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.raunaq-view-all:hover {
+  background: #421b28;
+  color: white;
+}
+
+/* COLLECTIONS */
+
+.raunaq-collections-section {
+  background: #eee6d9;
+}
+
+.raunaq-collections-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  perspective: 1200px;
+}
+
+.raunaq-collection-card {
+  position: relative;
+  display: block;
+  height: 450px;
+  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  background: #421b28;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.raunaq-collection-card:hover {
+  transform: translateY(-9px) rotateX(2deg);
+  box-shadow: 0 25px 50px rgba(66, 27, 40, 0.2);
+}
+
+.raunaq-collection-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.raunaq-collection-card:hover img {
+  transform: scale(1.1);
+}
+
+.raunaq-collection-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 24px 18px;
+  background: linear-gradient(
+    to top,
+    rgba(30, 12, 18, 0.9),
+    rgba(30, 12, 18, 0.08) 75%
+  );
+}
+
+.raunaq-collection-overlay > div > span {
+  color: #e2c28d;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.raunaq-collection-overlay h3 {
+  margin: 10px 0;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.raunaq-collection-overlay p {
+  margin: 0;
+  color: #eee2d7;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.raunaq-collection-arrow {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .raunaq-products-grid,
+  .raunaq-collections-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .raunaq-product-image-wrap {
+    height: 330px;
+  }
+}
+
+@media (max-width: 760px) {
+  .raunaq-featured-section,
+  .raunaq-collections-section {
+    padding: 75px 5%;
+  }
+
+  .raunaq-products-grid,
+  .raunaq-collections-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+
+  .raunaq-product-image-wrap {
+    height: 280px;
+  }
+
+  .raunaq-product-info {
+    padding: 14px 11px 17px;
+  }
+
+  .raunaq-product-info h3 {
+    font-size: 16px;
+  }
+
+  .raunaq-product-description {
+    font-size: 11px;
+  }
+
+  .raunaq-quick-add {
+    opacity: 1;
+    transform: translateY(0) translateZ(40px);
+    min-height: 40px;
+    font-size: 10px;
+  }
+
+  .raunaq-product-image-caption {
+    display: none;
+  }
+
+  .raunaq-collection-card {
+    height: 340px;
+  }
+
+  .raunaq-collection-overlay {
+    padding: 16px 12px;
+  }
+
+  .raunaq-collection-overlay h3 {
+    font-size: 19px;
+  }
+
+  .raunaq-collection-overlay p {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .raunaq-products-grid,
+  .raunaq-collections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .raunaq-product-image-wrap {
+    height: 390px;
+  }
+
+  .raunaq-collection-card {
+    height: 390px;
+  }
+}
+
+/* ACCESSIBILITY: REDUCE MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .raunaq-product-card,
+  .raunaq-product-image,
+  .raunaq-collection-card,
+  .raunaq-collection-card img,
+  .raunaq-quick-add {
+    transition: none !important;
+    animation: none !important;
+  }
+}

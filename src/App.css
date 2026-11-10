@@ -1,0 +1,53 @@
+
+/* ========================================
+   RAUNAQ — APP LAYOUT
+======================================== */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: #f7f2e9;
+  overflow-x: clip;
+}
+
+/* ========================================
+   PAGE TRANSITIONS
+======================================== */
+
+.app main {
+  width: 100%;
+  min-height: 50vh;
+}
+
+/* ========================================
+   PREMIUM BUTTON INTERACTION
+======================================== */
+
+.app button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app button:active {
+  transform: scale(0.98);
+}
+
+/* ========================================
+   RESPONSIVE LAYOUT
+======================================== */
+
+@media (max-width: 768px) {
+  .app {
+    overflow-x: clip;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app button:active {
+    transform: none;
+  }
+}
